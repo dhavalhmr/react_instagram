@@ -1,11 +1,11 @@
 import React from 'react';
 import './Homepage.css';
 import Sidenav from './navigation/Sidenav';
-import Timelime from './timeline/Timelime';
+import Timelime from './timeline/Timeline';
 
 function Homepage() {
   return (
-    <div>
+    <div className="homepage">
       <div className="homepage__nav">
         <Timelime />
       </div>
