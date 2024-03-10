@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './login.css';
 
 function Login() {
@@ -13,19 +14,17 @@ function Login() {
       return;
     }
     try {
-      const response = await fetch('http://localhost:2000/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
-        credentials: 'include',
-      });
+      const response = await axios.post(
+        'http://localhost:2000/auth/login',
+        { username, password },
+        { withCredentials: true }
+      );
 
       if (response.redirected) {
         window.location.href = response.url;
         return;
       }
 
-      // const response = await axios.get("http://localhost:2000/auth/login")
       if (!response.ok) {
         const errorData = (await response.json()).error.errors[0];
         throw new Error(errorData.message);
@@ -39,7 +38,7 @@ function Login() {
 
       setError('');
       console.log('Login successful');
-      window.location.href = 'http://localhost:3000/';
+      window.location.href = 'http://localhost:3000/'; // redirect into the homepage
     } catch (error) {
       setError(error.message);
     }

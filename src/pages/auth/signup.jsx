@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 
 function Signup() {
@@ -14,12 +15,12 @@ function Signup() {
       return;
     }
     try {
-      const response = await fetch('http://localhost:2000/auth/create', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, name, username, password }),
-      });
-      // const response = await axios.get("http://localhost:2000/auth/login")
+      const response = await axios.post(
+        'http://localhost:2000/auth/create',
+        { email, name, username, password },
+        { withCredentials: true }
+      );
+
       if (response.redirected) {
         window.location.href = response.url;
         return;
