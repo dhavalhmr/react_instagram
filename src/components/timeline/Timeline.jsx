@@ -3,7 +3,7 @@ import './Timeline.css';
 import Suggestion from '../suggestion/Suggestion';
 import Post from './post/Post';
 
-function Timelime() {
+function Timeline() {
   // eslint-disable-next-line no-unused-vars
   const [posts, setPosts] = useState([
     {
@@ -58,4 +58,4 @@ function Timelime() {
   );
 }
 
-export default Timelime;
+export default Timeline;

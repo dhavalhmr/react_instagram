@@ -1,7 +1,8 @@
 import React from 'react';
 import './Homepage.css';
-import Sidenav from './pages/navigation/Sidenav';
-import Timelime from './pages/timeline/Timeline';
+
+import Sidenav from '../components/navigation/Sidenav';
+import Timeline from '../components/timeline/Timeline'
 
 function Homepage() {
   return (
@@ -10,7 +11,7 @@ function Homepage() {
         <Sidenav />
       </div>
       <div className="homepage__timeline">
-        <Timelime />
+        <Timeline />
       </div>
     </div>
   );
