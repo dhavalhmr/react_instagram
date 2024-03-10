@@ -1,16 +1,16 @@
 import React from 'react';
 import './Homepage.css';
-import Sidenav from './navigation/Sidenav';
-import Timelime from './timeline/Timeline';
+import Sidenav from './pages/navigation/Sidenav';
+import Timelime from './pages/timeline/Timeline';
 
 function Homepage() {
   return (
     <div className="homepage">
       <div className="homepage__nav">
-        <Timelime />
+        <Sidenav />
       </div>
       <div className="homepage__timeline">
-        <Sidenav />
+        <Timelime />
       </div>
     </div>
   );
