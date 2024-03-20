@@ -21,13 +21,13 @@ function Signup() {
         { withCredentials: true }
       );
 
-      if (response.redirected) {
-        window.location.href = response.url;
+      if (response?.data?.user) {
+        // window.location.href = 'http://localhost:3000' ;
         return;
       }
 
       if (!response.ok) {
-        const errorData = (await response.json()).error.errors[0];
+        const errorData = response.error.errors[0];
         throw new Error(errorData.message);
       }
       setError('');

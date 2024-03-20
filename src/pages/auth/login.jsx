@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './login.css';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
+  const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!username.trim() || !password.trim()) {
@@ -25,20 +26,19 @@ function Login() {
         return;
       }
 
-      if (!response.ok) {
-        const errorData = (await response.json()).error.errors[0];
-        throw new Error(errorData.message);
-      }
-
-      const responseData = await response.json();
-      const { accessToken, refreshToken } = responseData;
-
+      const { accessToken, refreshToken } = response.data;
       localStorage.setItem('access_token', accessToken);
       localStorage.setItem('refresh_token', refreshToken);
 
       setError('');
       console.log('Login successful');
-      window.location.href = 'http://localhost:3000/'; // redirect into the homepage
+      if (response.status !== 200) {
+        const errorData = response.error.errors[0];
+        throw new Error(errorData.message);
+      } else {
+        console.log('true');
+        navigate('/homepage');
+      }
     } catch (error) {
       setError(error.message);
     }
