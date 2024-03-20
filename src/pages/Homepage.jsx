@@ -1,8 +1,8 @@
 import React from 'react';
-import './Homepage.css';
+import '../styles/Homepage.css';
 
-import Sidenav from '../components/navigation/Sidenav';
-import Timeline from '../components/timeline/Timeline'
+import Sidenav from '../components/Sidenav';
+import Timeline from '../components/Timeline'
 
 function Homepage() {
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './Timeline.css';
-import Suggestion from '../suggestion/Suggestion';
-import Post from './post/Post';
+import '../styles/Timeline.css';
+import Suggestion from './Suggestion';
+import Post from './Post';
 
 function Timeline() {
   // eslint-disable-next-line no-unused-vars

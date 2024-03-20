@@ -1,5 +1,5 @@
 import React from 'react';
-import './Suggestion.css';
+import '../styles/Suggestion.css';
 
 function Suggestion() {
   return <div>Suggestion</div>;

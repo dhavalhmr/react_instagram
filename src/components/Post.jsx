@@ -1,5 +1,5 @@
 import React from 'react';
-import './Post.css';
+import '../styles/Post.css';
 import { Avatar } from '@mui/material';
 import {
   BookmarkBorder,
