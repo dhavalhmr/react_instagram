@@ -19,7 +19,7 @@ const user = [
   },
 ];
 
-function Suggestions({}) {
+function Suggestions() {
   return (
     <div className="suggestions">
       <div className="suggestions__title">Suggestions for you</div>
