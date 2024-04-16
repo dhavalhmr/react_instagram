@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import profilePic from '../assets/profilePic.png';
-import { useMounted } from '../hooks/useMount';
-import API from '../api/axiosPrivate';
 
 const ProfileDetailsWrapper = styled.div`
   display: flex;
@@ -43,30 +41,22 @@ const StatsLabel = styled.span`
   font-size: 14px;
 `;
 
-function ProfileDetails() {
-  const mounted = useMounted();
-  useEffect(() => {
-    (async () => {
-      if (mounted) {
-        const user = await API.get('/user/get');
-        console.log('user:', user);
-      }
-    })();
-  }, [mounted]);
+function ProfileDetails({ user }) {
+  console.log('ProfileDetails  user:', user);
   return (
     <ProfileDetailsWrapper>
       <ProfileImage src={profilePic} />
       <ProfileStats>
         <StatsBlock>
-          <StatsNumber>515</StatsNumber>
+          <StatsNumber>{`${user?.posts?.length ?? 0}`}</StatsNumber>
           <StatsLabel>posts</StatsLabel>
         </StatsBlock>
         <StatsBlock>
-          <StatsNumber>55.3K</StatsNumber>
+          <StatsNumber>{`${user?.follower?.length ?? 0}`}</StatsNumber>
           <StatsLabel>followers</StatsLabel>
         </StatsBlock>
         <StatsBlock>
-          <StatsNumber>332</StatsNumber>
+          <StatsNumber>{`${user?.following?.length ?? 0}`}</StatsNumber>
           <StatsLabel>following</StatsLabel>
         </StatsBlock>
       </ProfileStats>
