@@ -6,7 +6,7 @@ function Signup() {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
-  const [error, setError] = useState('');
+  const [errors, setError] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -89,7 +89,7 @@ function Signup() {
             />
             <label htmlFor="password">Password</label>
           </div>
-          {error && <p className="error">{error}</p>}
+          {errors && <p className="error">{errors}</p>}
           <button className="login-button" title="Login" type="submit">
             Sign Up
           </button>

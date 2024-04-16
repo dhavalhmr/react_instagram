@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import scLogo from '../assets/scLogo.jpg';
+import profilePic from '../assets/profilePic.png';
+import { useMounted } from '../hooks/useMount';
+import API from '../api/axiosPrivate';
 
 const ProfileDetailsWrapper = styled.div`
   display: flex;
@@ -10,7 +12,6 @@ const ProfileDetailsWrapper = styled.div`
 `;
 
 const ProfileImage = styled.img`
-
   max-width: 130px;
   border: 1px solid #919191;
   border-radius: 50%;
@@ -43,9 +44,18 @@ const StatsLabel = styled.span`
 `;
 
 function ProfileDetails() {
+  const mounted = useMounted();
+  useEffect(() => {
+    (async () => {
+      if (mounted) {
+        const user = await API.get('/user/get');
+        console.log('user:', user);
+      }
+    })();
+  }, [mounted]);
   return (
     <ProfileDetailsWrapper>
-      <ProfileImage src={scLogo} />
+      <ProfileImage src={profilePic} />
       <ProfileStats>
         <StatsBlock>
           <StatsNumber>515</StatsNumber>

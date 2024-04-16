@@ -9,32 +9,34 @@ import Tabs from '../components/Tabs';
 import PostGrid from '../components/PostGrid';
 import styled from 'styled-components';
 
-// const ProfileWrapper = styled.div`
-//   background-color: #000;
-//   max-width: 600px;
-//   width: 100%;
-//   height: 100vh;
-//   margin: 0 auto;
-//   overflow-x: hidden;
+const ProfileWrapper = styled.div`
+  background-color: #000;
+  max-width: 600px;
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 
-//   ::-webkit-scrollbar {
-//     display: none;
-//   }
-// `;
+  scrollbar-width: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
 
 function Profile() {
   return (
     <div>
-      {/* <ProfileWrapper> // mobile view wrapper */}
-      <TopNav />
-      <ViewDashboard />
-      <ProfileDetails />
-      <About />
-      <ProfileButtons />
-      <Highlights />
-      <Tabs />
-      <PostGrid />
-      {/* </ProfileWrapper> */}
+      <ProfileWrapper>
+        <TopNav />
+        <ViewDashboard />
+        <ProfileDetails />
+        <About />
+        <ProfileButtons />
+        <Highlights />
+        <Tabs />
+        <PostGrid />
+      </ProfileWrapper>
     </div>
   );
 }

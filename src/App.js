@@ -7,8 +7,8 @@ import {
   Navigate,
 } from 'react-router-dom';
 import './App.css';
-import Login from './pages/auth/login';
-import Signup from './pages/auth/signup';
+import Login from './pages/auth/Login';
+import Signup from './pages/auth/Signup';
 import Homepage from './pages/Homepage';
 import { UnAuthRoute, UserAuthRoute } from './routes/RouteComponent';
 import Profile from './pages/Profile';
@@ -26,10 +26,10 @@ function App() {
           path="/homepage"
           element={<UserAuthRoute Component={Homepage} />}
         />
-        {/* <Route
+        <Route
           path="/profile"
           element={<UserAuthRoute Component={Profile} />}
-        /> */}
+        />
       </Routes>
     </div>
   );

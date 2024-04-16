@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import '../../styles/Login.css';
 import { useNavigate } from 'react-router-dom';
+import '../../styles/Login.css';
+import API from '../../api/axiosPrivate';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -15,20 +15,16 @@ function Login() {
       return;
     }
     try {
-      const response = await axios.post(
-        'http://localhost:2000/auth/login',
+      const response = await API.post(
+        `${process.env.REACT_APP_BASE_URL}/auth/login`,
         { username, password },
         { withCredentials: true }
       );
 
-      if (response.redirected) {
-        window.location.href = response.url;
-        return;
-      }
-
-      const { accessToken, refreshToken } = response.data;
+      const { accessToken, refreshToken, user } = response.data;
       localStorage.setItem('access_token', accessToken);
       localStorage.setItem('refresh_token', refreshToken);
+      localStorage.setItem('user', user);
 
       setError('');
       console.log('Login successful');
@@ -36,7 +32,6 @@ function Login() {
         const errorData = response.error.errors[0];
         throw new Error(errorData.message);
       } else {
-        console.log('true');
         navigate('/homepage');
       }
     } catch (error) {
