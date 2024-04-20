@@ -4,13 +4,13 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Navigate,
+  Navigate
 } from 'react-router-dom';
+import { UnAuthRoute, UserAuthRoute } from './routes/RouteComponent';
 import './App.css';
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import Homepage from './pages/Homepage';
-import { UnAuthRoute, UserAuthRoute } from './routes/RouteComponent';
 import Profile from './pages/Profile';
 
 function App() {

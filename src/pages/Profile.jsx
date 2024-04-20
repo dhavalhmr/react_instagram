@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useMounted } from '../hooks/useMount';
+
 import TopNav from '../components/TopNav';
 import ViewDashboard from '../components/ViewDashboard';
 import ProfileDetails from '../components/ProfileDetails';
@@ -8,7 +10,7 @@ import Highlights from '../components/Highlights';
 import Tabs from '../components/Tabs';
 import PostGrid from '../components/PostGrid';
 import styled from 'styled-components';
-import { useMounted } from '../hooks/useMount';
+
 import API from '../api/axiosPrivate';
 
 const ProfileWrapper = styled.div`
